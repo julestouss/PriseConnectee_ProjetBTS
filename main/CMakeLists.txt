@@ -4,6 +4,7 @@ idf_component_register(SRCS "projetE6.c" "../libProj/wifi_ap_sta.c" "../libProj/
                             REQUIRES driver
                             REQUIRES esp_wifi
                             REQUIRES nvs_flash
+                            REQUIRES esp_http_server
                             INCLUDE_DIRS "."
                             INCLUDE_DIRS "../libProj/include"
                             )
