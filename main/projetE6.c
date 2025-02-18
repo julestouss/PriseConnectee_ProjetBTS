@@ -34,7 +34,7 @@ void app_main(void) {
         return;
     }
 
-    sta_conf_wifi("Altice_F524", "tscp1065");
+    ESP_ERROR_CHECK(http_conf());
 
 
 }
