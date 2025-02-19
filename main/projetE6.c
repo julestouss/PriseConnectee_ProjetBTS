@@ -6,6 +6,7 @@
 #include "constants.h"
 #include "wifi_ap_sta.h"
 #include "http_server.h"
+#include "mqtt.h"
 
 
 
@@ -35,7 +36,14 @@ void app_main(void) {
         return;
     }
 
-    ESP_ERROR_CHECK(http_conf());
+    //ESP_ERROR_CHECK(http_conf());
+    // commenté pour tester le wifi et mqtt sans avoir a passer par la page web a chaque fois
+    sta_conf_wifi("Altice_F524", "tscp1065");
 
+//    xEventGroupWaitBits(wifi_event_group, WIFI_CONNECTED_BIT, pdFALSE, pdTRUE, portMAX_DELAY);
+
+    mqtt_app_start();
+
+    xTaskCreate(Publisher_Task, "Publisher_Task", 1024 * 5, NULL, 5, NULL);
 
 }
