@@ -18,6 +18,6 @@ void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event
 
 void mqtt_app_start(void);
 
-void Publisher_Task(void *params);
+void Publisher_Task(void *param);
 
 #endif

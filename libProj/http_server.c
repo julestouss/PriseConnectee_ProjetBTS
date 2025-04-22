@@ -3,6 +3,8 @@
 #include "wifi_ap_sta.h"
 
 static const char *TAG = "WIFI :";  // Définir TAG comme une chaîne de caractères
+char ssid[32] = {0};
+char password[64] = {0};
 
 
 static esp_err_t test_handler(httpd_req_t *req) {
@@ -106,8 +108,7 @@ static esp_err_t configure_handler(httpd_req_t *req) {
     }
     buf[len] = '\0';
 
-    char ssid[32] = {0};
-    char password[64] = {0};
+
     sscanf(buf, "ssid=%31[^&]&password=%63s", ssid, password);
 
     ESP_LOGI("CONFIGURE_HANDLER", "Parsed SSID: %s", ssid);

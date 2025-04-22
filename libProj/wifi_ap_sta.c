@@ -45,6 +45,7 @@ esp_err_t sta_conf_wifi(char* STA_SSID, char* STA_PASS) {
         ESP_LOGE("STA_CONF", "Erreur lors de esp_wifi_connect: %s", esp_err_to_name(err));
         return err;
     }
+    ESP_LOGI(TAG, "fin de la fonction de connexion");
 
     return ESP_OK;
 }
@@ -61,7 +62,10 @@ esp_err_t network_conf() {
         ESP_LOGE(TAG, "Failed to create default event loop: %s", esp_err_to_name(err));
         return err;
     }
-
+    if ((err = esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &wifi_event_handler, NULL)) != ESP_OK){
+        ESP_LOGE(TAG, "Failed to register the event handler");
+        return err;
+    }
     if (!esp_netif_create_default_wifi_sta() || !esp_netif_create_default_wifi_ap()) {
         ESP_LOGE(TAG, "Failed to create Wi-Fi interfaces");
         return ESP_FAIL;

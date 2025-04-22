@@ -19,6 +19,7 @@ esp_err_t network_conf(void);
 // Wi-Fi event handler
 void wifi_event_handler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data);
 
+void wifi_init_softap(void);
 
 extern EventGroupHandle_t wifi_event_group;
 extern const int WIFI_CONNECTED_BIT;

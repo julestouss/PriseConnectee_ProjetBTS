@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.25)
 
-idf_component_register(SRCS "projetE6.c" "../libProj/wifi_ap_sta.c" "../libProj/http_server.c" "../libProj/mqtt.c"
+idf_component_register(SRCS "projetE6.c" "../libProj/wifi_ap_sta.c" "../libProj/http_server.c" "../libProj/mqtt.c" "../libProj/constants.c"
                             REQUIRES driver
                             REQUIRES esp_wifi
                             REQUIRES nvs_flash
